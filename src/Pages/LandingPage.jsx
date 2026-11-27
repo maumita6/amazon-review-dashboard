@@ -6,8 +6,10 @@ import './../App.css';
 
 export default function LandingPage() {
 
-    const modules = import.meta.glob('../../public/data/*.csv');
-
+    const modules = import.meta.glob('../../public/data/*.csv', {
+        query: '?raw',
+        import: 'default',
+    });
     const filenames = Object.keys(modules).map((item) => item.split('.')[4].split('/').pop())
 
     console.log(filenames);
