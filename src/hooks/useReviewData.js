@@ -45,8 +45,7 @@ export default function useReviewData(filename) {
     const allRows = useMemo(() => {
         if (!csvContent) {
             return {
-                rows: [],
-                productName: "Product Review Analysis"
+                rows: []
             };
         }
         const parsed = Papa.parse(csvContent.trim(), {
@@ -59,12 +58,9 @@ export default function useReviewData(filename) {
         return normalizeReviews(parsed.data);
 
     }, [csvContent]);
-    //console.log(csvContent);
-    console.log(allRows);
 
-    //const productName = rows[0]?.product_name || "Product Review Analysis";
 
-    const kpis = useMemo(() => calculateKPI(allRows), [allRows])
+    const kpis = useMemo(() => calculateKPI(allRows), [allRows]);
 
     return { allRows, kpis, loading, error }
 

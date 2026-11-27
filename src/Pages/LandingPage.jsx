@@ -16,9 +16,6 @@ export default function LandingPage() {
 
     const navigate = useNavigate();
 
-
-
-
     return (
         <div className="app-container">
             <div>

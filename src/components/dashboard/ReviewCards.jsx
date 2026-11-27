@@ -1,66 +1,21 @@
 import React, { useMemo, useEffect, useState, useContext } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-import Papa from 'papaparse';
 import './ReviewCard.css';
 import { FilterContext } from './../../context/FilterContext';
-import useReviewData from '../../hooks/useReviewData';
-
 
 
 export default function ReviewCard({ rows }) {
-    const navigate = useNavigate();
-    const { filename } = useParams();
 
     const { setActiveFilter } = useContext(FilterContext);
 
-    const { allRows, kpis, loading, error } = useReviewData(filename);
+    console.log(rows);
 
-    /* const rows = useMemo(() => {
-         if (!review) return [];
-         const parsed = Papa.parse(review.trim(), {
-             header: true,
-             skipEmptyLines: true,
-         });
-         return parsed.data;
-     }, [review]);*/
-
-    if (!rows.length) {
+    if (!rows) {
         return (
             <div className="dashboard-wrapper">
                 <div className="loading-state">Loading product analytics...</div>
             </div>
         );
     }
-
-    //const productName = rows?.[0]?.product_name || 'Product Review Analysis';
-    // const totalReviews = allRows.length;
-
-    /*const numericRatings = rows
-        .map((item) => Number(item.star_rating))
-        .filter((val) => !Number.isNaN(val) && val > 0);
-
-    const avgRating = numericRatings.length
-        ? (numericRatings.reduce((sum, val) => sum + val, 0) / numericRatings.length).toFixed(2)
-        : '0.0';
-
-    const positiveCount = rows.filter((item) => Number(item.star_rating) >= 4).length;
-    const positivePct = Math.round((positiveCount / totalReviews) * 100);
-
-    const verifiedCount = rows.filter((item) => String(item.verified_purchase).toLowerCase() === 'true').length;
-    const verifiedPct = Math.round((verifiedCount / totalReviews) * 100);
-
-    const variantCounts = rows.reduce((acc, item) => {
-        const variant = item.variant_format?.trim();
-        if (variant) {
-            acc[variant] = (acc[variant] || 0) + 1;
-        }
-        return acc;
-    }, {});
-
-    const sortedVariants = Object.entries(variantCounts).sort((a, b) => b[1] - a[1]);
-    const topVariantName = sortedVariants?.[0]?.[0] || 'N/A';
-    const topVariantCount = sortedVariants?.[0]?.[1] || 0;
-    const topVariantShare = totalReviews ? Math.round((topVariantCount / totalReviews) * 100) : 0;*/
 
     return (
         <section className="kpi-grid">
@@ -70,7 +25,7 @@ export default function ReviewCard({ rows }) {
                     <span className="kpi-pill pill-amber">★ Score</span>
                 </div>
                 <div className="kpi-bottom">
-                    <span className="kpi-value">{kpis.avgRating}</span>
+                    <span className="kpi-value">{rows.avgRating}</span>
                     <span className="kpi-sub">/ 5.0</span>
                 </div>
             </div>
@@ -81,8 +36,8 @@ export default function ReviewCard({ rows }) {
                     <span className="kpi-pill pill-green">4 & 5 ★</span>
                 </div>
                 <div className="kpi-bottom">
-                    <span className="kpi-value">{kpis.positivePct}%</span>
-                    <span className="kpi-sub">({kpis.positiveCount})</span>
+                    <span className="kpi-value">{rows.positivePct}%</span>
+                    <span className="kpi-sub">({rows.positiveCount})</span>
                 </div>
             </div>
 
@@ -92,8 +47,8 @@ export default function ReviewCard({ rows }) {
                     <span className="kpi-pill pill-blue">Confirmed</span>
                 </div>
                 <div className="kpi-bottom">
-                    <span className="kpi-value">{kpis.verifiedPct}%</span>
-                    <span className="kpi-sub">({kpis.verifiedCount})</span>
+                    <span className="kpi-value">{rows.verifiedPct}%</span>
+                    <span className="kpi-sub">({rows.verifiedCount})</span>
                 </div>
             </div>
 
@@ -101,12 +56,12 @@ export default function ReviewCard({ rows }) {
                 <div className="kpi-top">
                     <span className="kpi-label">Most Demanded Variant</span>
                     <span className="kpi-pill pill-purple">
-                        {kpis.topVariantCount} ({kpis.topVariantShare}%)
+                        {rows.topVariantCount} ({rows.topVariantShare}%)
                     </span>
                 </div>
                 <div className="kpi-bottom">
-                    <span className="kpi-value-single-line" title={kpis.topVariantName}>
-                        {kpis.topVariantName}
+                    <span className="kpi-value-single-line" title={rows.topVariantName}>
+                        {rows.topVariantName}
                     </span>
                 </div>
             </div>

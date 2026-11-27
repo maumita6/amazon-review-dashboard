@@ -20,8 +20,6 @@ export default function DashboardPage() {
 
     const { allRows, kpis, loading, error } = useReviewData(filename);
 
-    console.log(kpis);
-
     if (loading) return <div className="loading-state">Loading dashboard...</div>;
     if (error) return <div className="error-state">{error}</div>;
 
@@ -46,11 +44,7 @@ export default function DashboardPage() {
          }
  
      }, [filename, csvContent])*/
-
-
-
-
-
+    //  console.log(kpis.productName);
 
     return (
         <>
@@ -68,7 +62,7 @@ export default function DashboardPage() {
                                 </button>
                             </header>
 
-                            <ReviewCard rows={allRows}></ReviewCard>
+                            <ReviewCard rows={kpis}></ReviewCard>
                             <ComboCharts rows={allRows}></ComboCharts>
                             <ReviewFeed rows={allRows}></ReviewFeed>
                         </div>

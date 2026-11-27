@@ -28,8 +28,7 @@ export function calculateKPI(rows = []) {
             topVariantShare: 0,
         }
     }
-
-    const productName = rows?.product_name || 'Product Review Analysis';
+    const productName = rows[0]?.product_name || 'Product Review Analysis';
     const validRatings = rows.filter((r) => r.star_rating > 0);
     const avgRating = validRatings.length
         ? (validRatings.reduce((sum, r) => sum + r.star_rating, 0) / validRatings.length).toFixed(1)
