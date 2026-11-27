@@ -3,8 +3,8 @@ import Papa from 'papaparse';
 
 
 const modules = import.meta.glob('../../public/data/*.csv', {
-    query: "?raw",
-    import: "default"
+    query: '?raw',
+    import: 'default',
 });
 
 
