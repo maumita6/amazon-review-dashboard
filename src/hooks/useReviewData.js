@@ -1,6 +1,6 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import Papa from 'papaparse';
-
+import { normalizeReviews, calculateKPI } from '../utils/analyticsHelpers';
 
 const modules = import.meta.glob('../../public/data/*.csv', {
     query: '?raw',
@@ -42,11 +42,11 @@ export default function useReviewData(filename) {
 
     // Parse CSV
 
-    const rows = useMemo(() => {
+    const allRows = useMemo(() => {
         if (!csvContent) {
             return {
                 rows: [],
-                productName: "Product Review Analysis123"
+                productName: "Product Review Analysis"
             };
         }
         const parsed = Papa.parse(csvContent.trim(), {
@@ -56,14 +56,16 @@ export default function useReviewData(filename) {
         });
 
 
-        return parsed.data;
+        return normalizeReviews(parsed.data);
 
     }, [csvContent]);
     //console.log(csvContent);
-    console.log(rows);
+    console.log(allRows);
 
-    const productName = rows[0]?.product_name || "Product Review Analysis";
+    //const productName = rows[0]?.product_name || "Product Review Analysis";
 
-    return { rows, productName, loading, error }
+    const kpis = useMemo(() => calculateKPI(allRows), [allRows])
+
+    return { allRows, kpis, loading, error }
 
 }

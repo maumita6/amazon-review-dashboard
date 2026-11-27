@@ -8,11 +8,7 @@ import useReviewData from '../hooks/useReviewData';
 import { FilterContext } from "./../context/FilterContext";
 
 
-//Load all csv files
-/*const modules = import.meta.glob('../../public/data/*.csv', {
-    query: "?raw",
-    import: "default"
-});*/
+
 
 
 export default function DashboardPage() {
@@ -22,6 +18,12 @@ export default function DashboardPage() {
 
     const [activeFilter, setActiveFilter] = useState('all');
 
+    const { allRows, kpis, loading, error } = useReviewData(filename);
+
+    console.log(kpis);
+
+    if (loading) return <div className="loading-state">Loading dashboard...</div>;
+    if (error) return <div className="error-state">{error}</div>;
 
 
     /* const [csvContent, setCsvContent] = useState("");
@@ -45,10 +47,7 @@ export default function DashboardPage() {
  
      }, [filename, csvContent])*/
 
-    const { rows, productName, loading, error } = useReviewData(filename);
 
-    if (loading) return <div className="loading-state">Loading dashboard...</div>;
-    if (error) return <div className="error-state">{error}</div>;
 
 
 
@@ -61,17 +60,17 @@ export default function DashboardPage() {
                         <div className="dashboard-container">
                             <header className="dashboard-header">
                                 <div className="title-row">
-                                    <h1 className="product-title">{productName}</h1>
-                                    <span className="total-reviews-badge">{rows.length} Reviews</span>
+                                    <h1 className="product-title">{kpis.productName}</h1>
+                                    <span className="total-reviews-badge">{allRows.length} Reviews</span>
                                 </div>
                                 <button className="back-btn" onClick={() => navigate("/")}>
                                     ← Back to Datasets
                                 </button>
                             </header>
 
-                            <ReviewCard rows={rows}></ReviewCard>
-                            <ComboCharts rows={rows}></ComboCharts>
-                            <ReviewFeed rows={rows}></ReviewFeed>
+                            <ReviewCard rows={allRows}></ReviewCard>
+                            <ComboCharts rows={allRows}></ComboCharts>
+                            <ReviewFeed rows={allRows}></ReviewFeed>
                         </div>
                     </div>
                 </div>
