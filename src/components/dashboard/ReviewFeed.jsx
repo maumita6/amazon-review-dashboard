@@ -26,15 +26,15 @@ export default function ReviewFeed({ rows = [] }) {
         <section className="feed-section">
             <div className="filter-toolbar">
                 <div className="filter-pills-group" role="group" aria-label="Review filters">
-                    <button type="button" className="filter-pill active" onClick={() => setActiveFilter("all")}>
-                        All <span className="pill-count">{filteredRows.length}</span>
+                    <button type="button" className={`filter-pill ${activeFilter === "all" ? "active" : ""}`} onClick={() => setActiveFilter("all")}>
+                        All <span className="pill-count">{rows.length}</span>
                     </button>
 
-                    <button type="button" className="filter-pill" onClick={() => setActiveFilter("critical")}>
+                    <button type="button" className={`filter-pill ${activeFilter === "critical" ? "active" : ""}`} onClick={() => setActiveFilter("critical")}>
                         Critical (1–2 ★) <span className="pill-count">{filteredCriticalRows.length}</span>
                     </button>
 
-                    <button type="button" className="filter-pill" onClick={() => setActiveFilter("verified")}>
+                    <button type="button" className={`filter-pill ${activeFilter === "verified" ? "active" : ""}`} onClick={() => setActiveFilter("verified")}>
                         Verified Purchase <span className="pill-count">{filteredVerified.length}</span>
                     </button>
                 </div>
