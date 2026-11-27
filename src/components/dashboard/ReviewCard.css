@@ -1,0 +1,207 @@
+.dashboard-wrapper {
+    min-height: auto;
+    background: linear-gradient(135deg, #eef7f4 0%, #f6f9f8 50%, #fbf3eb 100%);
+    padding: 2.5rem 1.5rem;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #18181b;
+    box-sizing: border-box;
+}
+
+.dashboard-container {
+    max-width: 1220px;
+    margin: 0 auto;
+}
+
+/* Header & Inline Title + Total Reviews Badge */
+.dashboard-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.eyebrow-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #71717a;
+    margin-bottom: 0.35rem;
+}
+
+.title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.product-title {
+    margin: 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: #163a21;
+}
+
+.total-reviews-badge {
+    display: inline-flex;
+    align-items: center;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    color: #3f3f46;
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+}
+
+.back-btn {
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 8px;
+    padding: 0.55rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #3f3f46;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: #fafafa;
+    border-color: #d4d4d8;
+    transform: translateY(-1px);
+}
+
+/* 4-Card Grid giving extra width (1.45fr) to the Most Demanded Variant card */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1.45fr;
+    gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Floating White KPI Cards */
+.kpi-card {
+    background: #ffffff;
+    border: 10px solid #dbe9e5;
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-width: 0;
+    /* Prevents grid blowout */
+}
+
+.kpi-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.07);
+}
+
+.kpi-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.kpi-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #71717a;
+    white-space: nowrap;
+}
+
+/* Status Pill Badges */
+.kpi-pill {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.pill-amber {
+    background-color: #fffbeb;
+    color: #b45309;
+    border-color: #fde68a;
+}
+
+.pill-green {
+    background-color: #ecfdf5;
+    color: #047857;
+    border-color: #a7f3d0;
+}
+
+.pill-blue {
+    background-color: #f0f9ff;
+    color: #0369a1;
+    border-color: #bae6fd;
+}
+
+.pill-purple {
+    background-color: #f5f3ff;
+    color: #6d28d9;
+    border-color: #ddd6fe;
+}
+
+/* Bottom Value Row */
+.kpi-bottom {
+    margin-top: 1.15rem;
+    display: flex;
+    align-items: baseline;
+    gap: 0.45rem;
+}
+
+.kpi-value {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: #18181b;
+    line-height: 1;
+}
+
+/* Keeps Most Demanded Variant strictly on 1 line */
+.kpi-value-single-line {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #18181b;
+    line-height: 1.45;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    width: 100%;
+}
+
+.kpi-sub {
+    font-size: 0.85rem;
+    color: #a1a1aa;
+    white-space: nowrap;
+}
+
+.loading-state {
+    text-align: center;
+    padding: 4rem;
+    color: #71717a;
+    font-size: 1rem;
+}

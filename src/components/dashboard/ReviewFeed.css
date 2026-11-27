@@ -1,0 +1,315 @@
+/* Main Section Wrapper */
+.feed-section {
+    margin-top: 2rem;
+}
+
+/* Header & Segmented Toggle Control */
+.feed-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+}
+
+.feed-title {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: #18181b;
+}
+
+.feed-subtitle {
+    margin: 0.25rem 0 0;
+    font-size: 0.85rem;
+    color: #71717a;
+}
+
+/* Segmented Pill Toggle (Grid vs Table) */
+.view-toggle {
+    display: inline-flex;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 10px;
+    padding: 0.25rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.toggle-btn {
+    border: none;
+    background: transparent;
+    padding: 0.45rem 0.9rem;
+    border-radius: 7px;
+    font-size: 0.825rem;
+    font-weight: 600;
+    color: #71717a;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.toggle-btn:hover {
+    color: #18181b;
+}
+
+.toggle-btn.active {
+    background-color: #18181b;
+    color: #ffffff;
+    box-shadow: 0 2px 6px rgba(24, 24, 27, 0.15);
+}
+
+/* =========================================
+   1. GRID VIEW STYLES
+   ========================================= */
+.reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+}
+
+@media (max-width: 1024px) {
+    .reviews-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .reviews-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.single-review-card {
+    background: #ffffff;
+    border: 1px solid #f4f4f5;
+    border-radius: 14px;
+    padding: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.single-review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 14px 35px rgba(0, 0, 0, 0.07);
+}
+
+/* Card Top Row: Stars & Verified Badge */
+.card-top-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.85rem;
+}
+
+.star-badge {
+    color: #f59e0b;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+}
+
+.verified-tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #047857;
+    background-color: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    white-space: nowrap;
+}
+
+/* Card Headline & Body */
+.review-headline {
+    margin: 0 0 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #18181b;
+    line-height: 1.35;
+}
+
+.review-body {
+    margin: 0 0 1.25rem;
+    font-size: 0.885rem;
+    line-height: 1.6;
+    color: #52525b;
+    flex-grow: 1;
+}
+
+/* Card Footer: Author & Variant Pill */
+.card-footer-meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid #f4f4f5;
+    font-size: 0.78rem;
+    color: #71717a;
+}
+
+.card-footer-meta strong {
+    color: #27272a;
+    font-weight: 600;
+}
+
+.variant-chip {
+    display: inline-block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #52525b;
+    background-color: #f4f4f5;
+    border: 1px solid #e4e4e7;
+    padding: 0.2rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+}
+
+/* =========================================
+   2. TABLE VIEW STYLES
+   ========================================= */
+.table-wrapper {
+    background: #ffffff;
+    border: 1px solid #f4f4f5;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    overflow-x: auto;
+    /* Enables smooth horizontal scroll on mobile */
+}
+
+.reviews-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.875rem;
+}
+
+.reviews-table thead {
+    background-color: #fafafa;
+    border-bottom: 1px solid #e4e4e7;
+}
+
+.reviews-table th {
+    padding: 0.95rem 1.25rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #71717a;
+    white-space: nowrap;
+}
+
+.reviews-table td {
+    padding: 1.1rem 1.25rem;
+    border-bottom: 1px solid #f4f4f5;
+    color: #3f3f46;
+    vertical-align: top;
+}
+
+.reviews-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.reviews-table tbody tr {
+    transition: background-color 0.15s ease;
+}
+
+.reviews-table tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+.star-cell {
+    font-weight: 700;
+    color: #d97706;
+    white-space: nowrap;
+}
+
+.table-title {
+    font-weight: 700;
+    color: #18181b;
+    margin-bottom: 0.25rem;
+}
+
+.table-text {
+    color: #52525b;
+    line-height: 1.5;
+    max-width: 480px;
+}
+
+.date-cell {
+    color: #71717a;
+    white-space: nowrap;
+    font-size: 0.82rem;
+}
+
+/* Toolbar Container */
+.filter-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Filter Pills Group */
+.filter-pills-group {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* Individual Filter Pill */
+.filter-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    background-color: #ffffff;
+    border: 1px solid #e4e4e7;
+    border-radius: 999px;
+    padding: 0.45rem 0.95rem;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: #52525b;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s ease;
+}
+
+.filter-pill:hover {
+    border-color: #d4d4d8;
+    background-color: #fafafa;
+    color: #18181b;
+}
+
+/* Active Filter State */
+.filter-pill.active {
+    background-color: #18181b;
+    border-color: #18181b;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(24, 24, 27, 0.12);
+}
+
+/* Count Badge Inside Each Pill */
+.pill-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    background-color: #7a4908;
+    color: #ffffff;
+}
+
+.filter-pill.active .pill-count {
+    background-color: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+}
