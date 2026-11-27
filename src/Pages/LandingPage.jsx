@@ -32,11 +32,11 @@ export default function LandingPage() {
             {filenames.map((name) => (
                 <div className="ui-card">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                        <strong key={name}>{name}</strong>
+                        <strong key={name}>{name}&nbsp;</strong>&nbsp;<em>(sample)</em>
 
                     </div>
 
-                    <div style={{ display: 'flex', gap: '0.2rem', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', gap: '0.3rem', alignItems: 'center' }}>
                         <button className="btn-secondary" style={{ flex: 1 }} onClick={() => navigate(`/dashboard/${encodeURIComponent(name)}`)}>
                             Analyse product
                         </button>
