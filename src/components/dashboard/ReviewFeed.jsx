@@ -55,7 +55,7 @@ export default function ReviewFeed({ rows = [] }) {
                     {filteredRows.map((item) => (
                         <article key={item.review_id} className="single-review-card">
                             <div className="card-top-meta">
-                                <span className="star-badge">{"★".repeat(Number(item.star_rating))}</span>
+                                <span className="star-badge">{"★".repeat(Math.round(Number(item.star_rating)))}</span>
                                 {String(item.verified_purchase).toLowerCase() === "true" && (
                                     <span className="verified-tag">✓ Verified</span>
                                 )}
